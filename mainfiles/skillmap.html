@@ -10,22 +10,16 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(to bottom, skyblue, white, lightpink) no-repeat;
             background-attachment: fixed;
-            height: 100vh;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
         }
-        .container{
-            height: 100vh;
+        .container {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            min-height: 100vh;
         }
         nav {
             display: flex;
@@ -38,7 +32,8 @@
             width: 100%;
             top: 0;
             left: 0;
-            z-index: 1;
+            z-index: 1000;
+            box-sizing: border-box;
         }
         .logo {
             font-size: 22px;
@@ -48,20 +43,11 @@
             text-transform: uppercase;
             position: relative;
         }
-        .logo::before {
-            font-size: 26px;
-            font-weight: bold;
-            color: blue;
-            position: absolute;
-            left: -12px;
-            top: 0;
-        }
         .logo span {
             color: orangered;
         }
         .nav-links {
             display: flex;
-            margin-right: 40px;
             gap: 10px;
         }
         .nav-links a {
@@ -74,18 +60,29 @@
         .nav-links a:hover {
             color: blue;
         }
-        .container{
-            height: 100vh;
+        #searchResults {
+            margin-top: 20px;
+            padding: 15px;
+            width: 80%;
+            max-width: 600px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            font-size: 16px;
+            color: black;
+            display: none; /* Initially hidden */
+        }
+        #searchResults h3 {
+            font-size: 20px;
+            color: darkblue;
+            margin-bottom: 10px;
         }
         h1 {
-            margin-top: 100px;
+            margin-top: 80px;
             font-size: 28px;
             font-weight: bold;
             color: darkblue;
-        }
-        .container{
-          margin-top: 1800px;
-          margin-bottom: 200px;
         }
         .search-container {
             display: flex;
@@ -94,6 +91,7 @@
             padding: 5px;
             border-radius: 30px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
         }
         .search-container input {
             padding: 12px;
@@ -132,41 +130,31 @@
             max-width: 400px;
             line-height: 1.5;
         }
-        .about-section{
-            height: 200vh;
-            /* background: white; */
+        .section {
+            margin: 40px 0;
+            width: 100%;
+        }
+        .about-section {
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            width: 94%;
+            width: 90%;
             text-align: center;
             padding: 40px;
+            margin: 40px auto;
         }
-        .about-section h2{
+        .about-section h2 {
             display: inline-block;
             border: 3px solid darkblue;
-            /* background-color: white; */
             padding: 10px 20px;
             border-radius: 20px;
             text-align: center;
-            margin-bottom: 100px;
-        }
-        .about-container {
-            /* width: 600px; */
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            text-align: center;
-        }
-        .about-item img{
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
+            margin-bottom: 40px;
         }
         .why-skillmap {
-            padding-top: 40px;
+            padding-top: 20px;
             text-align: center;
-            width: 80%;
+            width: 90%;
             margin: auto;
             display: flex;
             justify-content: space-between;
@@ -190,60 +178,92 @@
         .why-skillmap h4 {
             color: darkblue;
         }
-        .contact-section{
-            margin-top: 30px;
+        .contact-section {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-evenly;
+            justify-content: center;
             border-radius: 15px;
-            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 90%;
             text-align: center;
-            padding: 0px;
+            padding: 20px;
+            margin: 20px auto;
         }
         .contact-section h2 {
             color: darkblue;
             font-size: 24px;
+            margin-bottom: 10px;
         }
-        .icons{
-            width: 10%;
+        .icons {
+            width: 200px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 20px;  
+            font-size: 20px;
+            margin: 20px 0;
         }
-        .icons i{
+        .icons a {
             text-decoration: none;
             color: black;
         }
+        .icons a:hover {
+            color: blue;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 100%;
+        }
+        .about-item img{
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+        }
+        
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .why-skillmap div {
+                width: 100%;
+            }
+            .search-container input {
+                width: 200px;
+            }
+            .nav-links {
+                margin-right: 0;
+            }
+        }
     </style>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
     <nav>
         <div class="logo">Skill<span>Map</span></div>
         <div class="nav-links">
-            <a href="skillmap.html">Home</a>
+            <a href="#home">Home</a>
             <a href="#about">About us</a>
-            <a href="courses.html">Courses</a>
+            <a href="#courses">Courses</a>
             <a href="#contact">Contact</a>
-            <a href="./feedback.html">Feedback</a>
+            <a href="#feedback">Feedback</a>
         </div>
     </nav>
-    <div class="container">
+    
+    <div class="container" id="home">
         <h1>Welcome to SkillMap</h1>
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search...">
+            <input type="text" id="searchInput" placeholder="Search for skills or topics...">
             <button onclick="searchFunction()">
-                <i class="fas fa-search"></i>
+                <i class="bi bi-search"></i> Search
             </button>
         </div>
+        <div id="searchResults"></div>
         <div class="text-content">
             <p>Success comes from having access to the right resources at the right time, in the right place.</p>
             <p>Keep learning, keep exploring, and never stop growing.</p>
         </div>
     </div>
-    <div class="section about-section" id="about">
+    
+    <div class="about-section" id="about">
         <h2>About Us</h2>
         <div class="about-container">
             <div class="about-item">
@@ -298,26 +318,74 @@
             </div>
         </div>
     </div>
-    <div class="section contact-section" id="contact">
-        <h2>Contact Us: </h2>
+    
+    <div class="contact-section" id="contact">
+        <h2>Contact Us</h2>
         <p>Email: support@skillmap.com</p>
         <p>Phone: +123 456 7890</p>
         <div class="icons">
-            <a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
-            <a href="https://x.com/?lang=en-in"><i class="bi bi-twitter"></i></a>
-            <a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a>
-            <a href="https://web.telegram.org/a/"><i class="bi bi-telegram"></i></a>
-            <a href="https://in.linkedin.com/"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://x.com/?lang=en-in" target="_blank"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.facebook.com/" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="https://web.telegram.org/a/" target="_blank"><i class="bi bi-telegram"></i></a>
+            <a href="https://in.linkedin.com/" target="_blank"><i class="bi bi-linkedin"></i></a>
         </div>
     </div>
-    <div>
+    
+    <footer>
         <p>© 2025 SkillMap. All rights reserved.</p>
-    </div>
+    </footer>
+    
     <script>
         function searchFunction() {
             let query = document.getElementById("searchInput").value;
-            alert("Searching for: " + query);
+            if (!query) {
+                alert("Please enter a search term");
+                return;
+            }
+            
+            document.getElementById("searchResults").style.display = "block";
+            document.getElementById("searchResults").innerHTML = "<p>Searching...</p>";
+            
+            fetch("http://127.0.0.1:5000/api/search", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ query: query })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.response) {
+                    document.getElementById("searchResults").innerHTML = `
+                        <h3>Learning Roadmap for: ${query}</h3>
+                        <div>${data.response}</div>
+                    `;
+                } else {
+                    document.getElementById("searchResults").innerHTML = "<p>No results found.</p>";
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+                document.getElementById("searchResults").innerHTML = 
+                    "<p>Failed to fetch search results. Please try again later.</p>";
+            });
         }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>
